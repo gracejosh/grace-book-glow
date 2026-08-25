@@ -10,14 +10,29 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as BooksRouteImport } from './routes/books'
 import { Route as ChatRouteImport } from './routes/chat'
 import { Route as CoursesRouteImport } from './routes/courses'
+import { Route as FlyersRouteImport } from './routes/flyers'
+import { Route as PostsRouteImport } from './routes/posts'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as QuizRouteImport } from './routes/quiz'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BooksRoute = BooksRouteImport.update({
@@ -35,6 +50,21 @@ const CoursesRoute = CoursesRouteImport.update({
   path: '/courses',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FlyersRoute = FlyersRouteImport.update({
+  id: '/flyers',
+  path: '/flyers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PostsRoute = PostsRouteImport.update({
+  id: '/posts',
+  path: '/posts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const QuizRoute = QuizRouteImport.update({
   id: '/quiz',
   path: '/quiz',
@@ -43,39 +73,90 @@ const QuizRoute = QuizRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/blog': typeof BlogRoute
   '/books': typeof BooksRoute
   '/chat': typeof ChatRoute
   '/courses': typeof CoursesRoute
+  '/flyers': typeof FlyersRoute
+  '/posts': typeof PostsRoute
+  '/profile': typeof ProfileRoute
   '/quiz': typeof QuizRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/blog': typeof BlogRoute
   '/books': typeof BooksRoute
   '/chat': typeof ChatRoute
   '/courses': typeof CoursesRoute
+  '/flyers': typeof FlyersRoute
+  '/posts': typeof PostsRoute
+  '/profile': typeof ProfileRoute
   '/quiz': typeof QuizRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/blog': typeof BlogRoute
   '/books': typeof BooksRoute
   '/chat': typeof ChatRoute
   '/courses': typeof CoursesRoute
+  '/flyers': typeof FlyersRoute
+  '/posts': typeof PostsRoute
+  '/profile': typeof ProfileRoute
   '/quiz': typeof QuizRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/books' | '/chat' | '/courses' | '/quiz'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/blog'
+    | '/books'
+    | '/chat'
+    | '/courses'
+    | '/flyers'
+    | '/posts'
+    | '/profile'
+    | '/quiz'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/books' | '/chat' | '/courses' | '/quiz'
-  id: '__root__' | '/' | '/books' | '/chat' | '/courses' | '/quiz'
+  to:
+    | '/'
+    | '/admin'
+    | '/blog'
+    | '/books'
+    | '/chat'
+    | '/courses'
+    | '/flyers'
+    | '/posts'
+    | '/profile'
+    | '/quiz'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/blog'
+    | '/books'
+    | '/chat'
+    | '/courses'
+    | '/flyers'
+    | '/posts'
+    | '/profile'
+    | '/quiz'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  BlogRoute: typeof BlogRoute
   BooksRoute: typeof BooksRoute
   ChatRoute: typeof ChatRoute
   CoursesRoute: typeof CoursesRoute
+  FlyersRoute: typeof FlyersRoute
+  PostsRoute: typeof PostsRoute
+  ProfileRoute: typeof ProfileRoute
   QuizRoute: typeof QuizRoute
 }
 
@@ -86,6 +167,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/books': {
@@ -109,6 +204,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoursesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/flyers': {
+      id: '/flyers'
+      path: '/flyers'
+      fullPath: '/flyers'
+      preLoaderRoute: typeof FlyersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/posts': {
+      id: '/posts'
+      path: '/posts'
+      fullPath: '/posts'
+      preLoaderRoute: typeof PostsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/quiz': {
       id: '/quiz'
       path: '/quiz'
@@ -121,9 +237,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  BlogRoute: BlogRoute,
   BooksRoute: BooksRoute,
   ChatRoute: ChatRoute,
   CoursesRoute: CoursesRoute,
+  FlyersRoute: FlyersRoute,
+  PostsRoute: PostsRoute,
+  ProfileRoute: ProfileRoute,
   QuizRoute: QuizRoute,
 }
 export const routeTree = rootRouteImport
