@@ -61,7 +61,7 @@ export const VERSES: Verse[] = [
 
 export function verseOfTheDay(date = new Date()): Verse {
   const dayIndex = Math.floor(date.getTime() / 86_400_000);
-  return VERSES[dayIndex % VERSES.length];
+  return VERSES[dayIndex % VERSES.length]!;
 }
 
 export type Book = {

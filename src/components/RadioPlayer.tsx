@@ -7,14 +7,14 @@ import { cn } from "@/lib/utils";
 
 export function RadioPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [stationId, setStationId] = useState(RADIO_STATIONS[0].id);
+  const [stationId, setStationId] = useState(RADIO_STATIONS[0]!.id);
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
   const [volume, setVolume] = useState(0.7);
   const [muted, setMuted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const station = RADIO_STATIONS.find((s) => s.id === stationId) ?? RADIO_STATIONS[0];
+  const station = RADIO_STATIONS.find((s) => s.id === stationId) ?? RADIO_STATIONS[0]!;
 
   useEffect(() => {
     if (audioRef.current) {
