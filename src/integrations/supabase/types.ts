@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      book_downloads: {
+        Row: {
+          book_id: string
+          book_title: string
+          created_at: string
+          format: string | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          book_id: string
+          book_title: string
+          created_at?: string
+          format?: string | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          book_id?: string
+          book_title?: string
+          created_at?: string
+          format?: string | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       chat_messages: {
         Row: {
           content: string
@@ -35,6 +65,93 @@ export type Database = {
           id?: string
           room?: string
           sender_name?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          id: string
+          updated_at: string
+          username: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          id: string
+          updated_at?: string
+          username?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          id?: string
+          updated_at?: string
+          username?: string | null
+        }
+        Relationships: []
+      }
+      quiz_attempts: {
+        Row: {
+          created_at: string
+          id: string
+          score: number
+          total: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          score: number
+          total: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          score?: number
+          total?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      quizzes: {
+        Row: {
+          category: string
+          correct_index: number
+          created_at: string
+          id: string
+          options: string[]
+          question: string
+          reference: string | null
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          correct_index: number
+          created_at?: string
+          id?: string
+          options: string[]
+          question: string
+          reference?: string | null
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          correct_index?: number
+          created_at?: string
+          id?: string
+          options?: string[]
+          question?: string
+          reference?: string | null
+          updated_at?: string
         }
         Relationships: []
       }
