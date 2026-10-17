@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+Ethiopic:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Grace Bible — visual polish layer
+ * Keeps the existing Tailwind theme tokens and component class names intact.
+ * No application logic or component behavior is changed by this stylesheet.
+ */
+
+:root {
+  color-scheme: light dark;
+  --page-ivory: #faf8f2;
+  --surface: rgba(255, 255, 255, 0.88);
+  --ink: #202a24;
+  --muted-ink: #68736b;
+  --forest: #214c3b;
+  --forest-deep: #17392c;
+  --gold: #c29a4b;
+  --gold-soft: #ead8ad;
+  --line: rgba(38, 67, 51, 0.12);
+  --soft-shadow: 0 12px 34px rgba(34, 48, 38, 0.07);
+  --card-shadow: 0 18px 48px rgba(34, 48, 38, 0.09);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  @apply antialiased;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(194, 154, 75, 0.08), transparent 34rem),
+    radial-gradient(ellipse at 100% 18%, rgba(33, 76, 59, 0.055), transparent 38rem),
+    var(--page-ivory);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.lang-am {
+  font-family: 'Noto Serif Ethiopic', 'Inter', system-ui, sans-serif;
+}
+
+/* Keep the existing Tailwind class-based dark mode working. */
+.dark body {
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(194, 154, 75, 0.07), transparent 34rem),
+    radial-gradient(ellipse at 100% 18%, rgba(33, 76, 59, 0.12), transparent 38rem),
+    #020617;
+  color: #f1f5f9;
+}
+
+body.lang-am h1,
+body.lang-am h2,
+body.lang-am h3,
+body.lang-am h4,
+body.lang-am h5,
+body.lang-am h6 {
+  font-family: 'Noto Serif Ethiopic', 'Cormorant Garamond', Georgia, serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: inherit;
+  line-height: 1.15;
+  letter-spacing: -0.018em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-weight: 600;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+[role='button'],
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-underline-offset: 0.2em;
+  transition: color 180ms ease, opacity 180ms ease;
+}
+
+::selection {
+  background: rgba(194, 154, 75, 0.28);
+  color: #17392c;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(194, 154, 75, 0.8);
+  outline-offset: 3px;
+}
+
+@layer base {
+  * {
+    @apply border-slate-200 dark:border-slate-700;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  body.lang-am {
+    font-family: 'Noto Serif Ethiopic', 'Inter', system-ui, sans-serif;
+  }
+
+  body.lang-am h1,
+  body.lang-am h2,
+  body.lang-am h3,
+  body.lang-am h4,
+  body.lang-am h5,
+  body.lang-am h6 {
+    font-family: 'Noto Serif Ethiopic', 'Cormorant Garamond', Georgia, serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border border-white/20 dark:border-slate-700/50;
+    box-shadow: var(--soft-shadow);
+  }
+
+  .glass-card {
+    @apply bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border border-white/30 dark:border-slate-700/50 shadow-lg rounded-2xl;
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 220ms ease, border-color 220ms ease, transform 220ms ease;
+  }
+
+  .glass-card:hover {
+    box-shadow: 0 22px 55px rgba(34, 48, 38, 0.12);
+    border-color: rgba(194, 154, 75, 0.26);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary-600/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary-600/40 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+    min-height: 44px;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-gold-400 to-gold-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-gold-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-gold-500/40 hover:scale-[1.02] active:scale-[0.98];
+    min-height: 44px;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 dark:border-slate-600 px-6 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 transition-all duration-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:scale-[1.02] active:scale-[0.98];
+    min-height: 44px;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-3 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 transition-all duration-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none;
+    min-height: 46px;
+  }
+
+  .input-field:focus {
+    box-shadow: 0 0 0 4px rgba(194, 154, 75, 0.12);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-gold-500;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24;
+  }
+
+  .container-narrow {
+    @apply max-w-7xl mx-auto;
+    width: 100%;
+  }
+}
+
+@layer utilities {
+  .skeleton {
+    @apply bg-gradient-to-r from-slate-200 via-slate-100 to-slate-200 dark:from-slate-800 dark:via-slate-700 dark:to-slate-800 bg-[length:200%_100%] animate-shimmer;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(104, 115, 107, 0.45) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-slate-600 rounded-full;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Consistent, restrained hover motion for common interactive elements. */
+@media (hover: hover) and (pointer: fine) {
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']) {
+    transition-property: background-color, border-color, color, box-shadow, transform;
+    transition-duration: 180ms;
+    transition-timing-function: ease;
+  }
+}
+
+/* Respect reduced-motion preferences. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 30s linear infinite;
+}
